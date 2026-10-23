@@ -3,7 +3,7 @@
   "title": "Neon Velocity: Highway Run",
   "mode": "speed",
   "version": "1.0.0",
-  "videoUrl": "procedural://cyber_highway",
+  "videoUrl": "https://www.youtube.com/watch?v=oGFqgOKM2M4",
   "speedRange": [0.5, 2.5],
   "baseSpeed": 1.0,
   "difficulty": 1.0,
