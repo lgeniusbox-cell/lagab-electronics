@@ -1,0 +1,57 @@
+{
+  "type": "walk",
+  "meta": {
+    "id": "walk-sunny-beach",
+    "title": {
+      "en": "Sunset Coastline Stride",
+      "fr": "Foulée Côtière au Couchant",
+      "ar": "مسار الشاطئ عند الغروب"
+    },
+    "description": {
+      "en": "A relaxing 12-minute seaside stroll on a wooden boardwalk with rolling waves, dunes, and lighthouse views.",
+      "fr": "Une agréable promenade de 12 minutes sur ponton en bois avec vagues douces et phare marin.",
+      "ar": "نزهة شاطئية مريحة لمدة 12 دقيقة على ممشى خشبي وسط هدير الأمواج والنسيم البحري ومنارة الشاطئ."
+    },
+    "duration": 720,
+    "difficulty": "easy",
+    "version": "1.0.0"
+  },
+  "video": {
+    "youtubeId": "",
+    "src": "",
+    "startAt": 0,
+    "endAt": 720
+  },
+  "rules": {
+    "goalType": "steps",
+    "goalValue": 1200,
+    "referenceCadence": 100,
+    "idleTimeoutMs": 3000,
+    "idleResumeGraceMs": 1500,
+    "cadenceRateMapping": [
+      { "cadenceMin": 0, "cadenceMax": 40, "rate": 0.5 },
+      { "cadenceMin": 41, "cadenceMax": 75, "rate": 0.75 },
+      { "cadenceMin": 76, "cadenceMax": 105, "rate": 1.0 },
+      { "cadenceMin": 106, "cadenceMax": 130, "rate": 1.25 },
+      { "cadenceMin": 131, "cadenceMax": 999, "rate": 1.5 }
+    ],
+    "milestones": [
+      { "type": "steps", "value": 300, "message": "300 Steps! The sea breeze feels wonderful.", "effect": "flash" },
+      { "type": "steps", "value": 600, "message": "Halfway mark! 600 Steps along the coast.", "effect": "particles" },
+      { "type": "steps", "value": 900, "message": "900 Steps! Passing the palm grove.", "effect": "borderGlow" },
+      { "type": "steps", "value": 1200, "message": "Coastline Stride Complete! Amazing stroll!", "effect": "zoomPulse" }
+    ],
+    "pointsOfInterest": [
+      { "t": 20.0, "duration": 8.0, "title": "Golden Coastal Boardwalk", "description": "Wide timber promenade overlooking white sand and rolling gentle waves.", "icon": "water" },
+      { "t": 140.0, "duration": 8.0, "title": "Historic Wooden Fisher's Pier", "description": "Classic wooden pillars stretching 400 meters into the sparkling ocean.", "icon": "bridge" },
+      { "t": 280.0, "duration": 8.0, "title": "Tropical Palm Oasis", "description": "Tall swaying coconut palms catching the warm orange rays of the sunset.", "icon": "tree" },
+      { "t": 460.0, "duration": 8.0, "title": "Clifftop Lookout Point", "description": "Panoramic vista where dolphins can frequently be spotted on calm evenings.", "icon": "mountain" },
+      { "t": 620.0, "duration": 8.0, "title": "Historic Coastal Lighthouse", "description": "Built in 1888, guiding coastal mariners with its iconic rhythmic beacon.", "icon": "home" }
+    ]
+  },
+  "effects": {},
+  "timeline": [],
+  "endings": {
+    "victorySound": "win"
+  }
+}

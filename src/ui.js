@@ -15,6 +15,7 @@ import { SETTINGS, saveSettings, getCurrentProfile, saveProfile, t, I18N, getWee
 import { InputManager } from './input.js';
 import { AudioManager } from './audio.js';
 import { parseYouTubeUrl } from './videoSource.js';
+import { getActivitiesByType, BUILTIN_ACTIVITIES } from './builtinActivities.js';
 
 export function showToast(message, type = 'info') {
   let toastContainer = document.getElementById('app-toast-container');
@@ -332,7 +333,7 @@ export class UIManager {
               <div>
                 <div class="flex justify-between items-start mb-2">
                   <span class="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 text-[11px] font-black uppercase tracking-wider">
-                    ⚡ Rhythm Obstacle Run
+                    ⚡ 4 Games Ready
                   </span>
                   <span class="text-3xl filter drop-shadow">🎮</span>
                 </div>
@@ -340,16 +341,16 @@ export class UIManager {
                   ${t('game')}
                 </h3>
                 <p class="text-xs text-amber-100/80 mt-2.5 leading-relaxed">
-                  Jump over hurdles, slide low, and dash through glowing beat gates in sync with musical rhythms on the mat!
+                  Choose from 4 action rhythm runs: Beat Sync, Neon Velocity, Shinobi Path & Cyber Runner! Dodge hurdles, slide low, and hit musical gates.
                 </p>
               </div>
 
               <div class="pt-4 border-t border-amber-500/20 flex items-center justify-between">
                 <span class="text-xs font-black text-amber-300 uppercase tracking-wide flex items-center gap-1.5">
-                  Play Now →
+                  Select Game (4) →
                 </span>
                 <span class="px-2.5 py-1 rounded-lg bg-amber-400/10 text-amber-300 text-[11px] font-mono font-bold">
-                  90s · 3 Lives
+                  Pick & Play
                 </span>
               </div>
             </div>
@@ -359,7 +360,7 @@ export class UIManager {
               <div>
                 <div class="flex justify-between items-start mb-2">
                   <span class="px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-300 border border-emerald-400/40 text-[11px] font-black uppercase tracking-wider">
-                    🌲 Nature Journey
+                    🌲 3 Routes Ready
                   </span>
                   <span class="text-3xl filter drop-shadow">🏔️</span>
                 </div>
@@ -367,16 +368,16 @@ export class UIManager {
                   ${t('walk')}
                 </h3>
                 <p class="text-xs text-emerald-100/80 mt-2.5 leading-relaxed">
-                  Stroll peacefully through panoramic mountain trails. The video speeds up when you walk and pauses when you stop!
+                  Choose from 3 virtual walks! Stroll through scenic routes: Alpine Mountain Trail, Tokyo Neon Night Walk, or Sunset Coastline Stride.
                 </p>
               </div>
 
               <div class="pt-4 border-t border-emerald-500/20 flex items-center justify-between">
                 <span class="text-xs font-black text-emerald-300 uppercase tracking-wide flex items-center gap-1.5">
-                  Start Walk →
+                  Select Walk (3) →
                 </span>
                 <span class="px-2.5 py-1 rounded-lg bg-emerald-400/10 text-emerald-300 text-[11px] font-mono font-bold">
-                  1,000 Steps Goal
+                  Pick & Walk
                 </span>
               </div>
             </div>
@@ -386,7 +387,7 @@ export class UIManager {
               <div>
                 <div class="flex justify-between items-start mb-2">
                   <span class="px-3 py-1 rounded-full bg-rose-400/20 text-rose-300 border border-rose-400/40 text-[11px] font-black uppercase tracking-wider">
-                    🔥 Smart Treadmill
+                    🔥 3 Programs Ready
                   </span>
                   <span class="text-3xl filter drop-shadow">🏃</span>
                 </div>
@@ -394,16 +395,16 @@ export class UIManager {
                   ${t('cardio')}
                 </h3>
                 <p class="text-xs text-rose-100/80 mt-2.5 leading-relaxed">
-                  Full-screen athletic TV speed gauge with audio coaching, pace targets, sprint intervals, and joyful celebration!
+                  Choose from 3 smart treadmill programs! Full-screen TV gauge with coach cues: 20-min HIIT Interval Burn, Steady Aerobic, or Pyramid Climb.
                 </p>
               </div>
 
               <div class="pt-4 border-t border-rose-500/20 flex items-center justify-between">
                 <span class="text-xs font-black text-rose-300 uppercase tracking-wide flex items-center gap-1.5">
-                  Start Cardio →
+                  Select Cardio (3) →
                 </span>
                 <span class="px-2.5 py-1 rounded-lg bg-rose-400/10 text-rose-300 text-[11px] font-mono font-bold">
-                  20 Min HIIT
+                  Pick & Train
                 </span>
               </div>
             </div>
@@ -500,17 +501,17 @@ export class UIManager {
     document.getElementById('exp-advanced-btn')?.addEventListener('click', () => this.setExperienceLevel('advanced'));
     document.getElementById('exp-expert-btn')?.addEventListener('click', () => this.setExperienceLevel('expert'));
 
-    // Primary Happy Activity Tiles
+    // Primary Happy Activity Tiles - Open Multi-Activity Selection Screens
     document.getElementById('tile-game')?.addEventListener('click', () => {
-      this.app.loadActivityFromLinks('', './examples/game-cyber-runner.json');
+      this.showActivitySelectorModal('game');
     });
 
     document.getElementById('tile-walk')?.addEventListener('click', () => {
-      this.app.loadActivityFromLinks('', './examples/walk-alpine-trail.json');
+      this.showActivitySelectorModal('walk');
     });
 
     document.getElementById('tile-cardio')?.addEventListener('click', () => {
-      this.app.loadActivityFromLinks('', './examples/cardio-interval-burn.json');
+      this.showActivitySelectorModal('cardio');
     });
 
     // Top Navigation actions
@@ -545,11 +546,173 @@ export class UIManager {
     });
   }
 
+  // --- ACTIVITY SELECTOR MODAL (GAMES, WALKS, CARDIO) ---
+  showActivitySelectorModal(category) {
+    const activities = getActivitiesByType(category);
+    const lang = SETTINGS.language || 'en';
+    const profile = getCurrentProfile();
+
+    let catIcon = '🎮';
+    let catTitle = t('selectGame');
+    let themeBorder = 'border-amber-400/60';
+    let themePill = 'bg-amber-400/20 text-amber-300 border border-amber-400/40';
+    let launchBtnClass = 'bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950';
+    let playBtnLabel = t('playGame');
+
+    if (category === 'walk') {
+      catIcon = '🏔️';
+      catTitle = t('selectWalk');
+      themeBorder = 'border-emerald-400/60';
+      themePill = 'bg-emerald-400/20 text-emerald-300 border border-emerald-400/40';
+      launchBtnClass = 'bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-300 hover:to-teal-400 text-slate-950';
+      playBtnLabel = t('startWalk');
+    } else if (category === 'cardio') {
+      catIcon = '🏃';
+      catTitle = t('selectCardio');
+      themeBorder = 'border-rose-400/60';
+      themePill = 'bg-rose-400/20 text-rose-300 border border-rose-400/40';
+      launchBtnClass = 'bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-300 hover:to-pink-400 text-slate-950';
+      playBtnLabel = t('startWorkout');
+    }
+
+    const modal = document.createElement('div');
+    modal.id = 'activity-selector-modal';
+    modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-xl p-4 md:p-8 select-none text-white';
+
+    modal.innerHTML = `
+      <div class="w-full max-w-5xl bg-slate-900/95 border-2 ${themeBorder} rounded-3xl p-6 md:p-8 shadow-2xl flex flex-col max-h-[90vh] text-white">
+        
+        <!-- Header Row -->
+        <div class="flex items-center justify-between pb-4 border-b border-indigo-900/40 mb-5">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl filter drop-shadow">${catIcon}</span>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-2xl md:text-3xl font-black uppercase text-white tracking-wide">
+                  ${catTitle}
+                </h2>
+                <span class="text-xs px-2.5 py-0.5 rounded-full font-bold ${themePill}">
+                  ${activities.length} Ready
+                </span>
+              </div>
+              <p class="text-xs text-sky-200 mt-1">${t('chooseActivity')} — Full arrow & gamepad support!</p>
+            </div>
+          </div>
+
+          <button id="modal-close-btn" class="nav-focus px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-200 hover:text-white font-bold text-xs flex items-center gap-1.5 transition shadow">
+            ✕ ${t('backToHome')}
+          </button>
+        </div>
+
+        <!-- Activity Cards Grid -->
+        <div id="selector-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-y-auto p-1 pr-2">
+          ${activities.map((item) => {
+            const itemTitle = item.meta.title?.[lang] || item.meta.title?.en || item.meta.id;
+            const itemDesc = item.meta.description?.[lang] || item.meta.description?.en || '';
+            const diff = item.meta.difficulty || 'medium';
+            const diffColor = diff === 'easy' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40' : (diff === 'hard' ? 'bg-rose-500/20 text-rose-300 border-rose-400/40' : 'bg-amber-500/20 text-amber-300 border-amber-400/40');
+
+            let specText = `${item.duration}s`;
+            if (category === 'game') {
+              specText = `${item.duration}s · ${item.rules?.lives || 3} Lives`;
+            } else if (category === 'walk') {
+              specText = `${Math.round(item.duration / 60)} Min · ${item.rules?.goalValue || 1000} Steps`;
+            } else if (category === 'cardio') {
+              specText = `${Math.round(item.duration / 60)} Min · ${item.rules?.program?.length || 5} Phases`;
+            }
+
+            const best = profile?.bests?.[item.meta.id];
+            let bestBadge = '';
+            if (best) {
+              if (category === 'game' && best.score) {
+                bestBadge = `🏆 ${best.score} pts (${best.stars || 0}★)`;
+              } else if (category === 'walk' && best.steps) {
+                bestBadge = `🏆 ${best.steps} steps`;
+              } else if (category === 'cardio' && best.duration) {
+                bestBadge = `🏆 ${Math.round(best.duration / 60)} min`;
+              }
+            }
+
+            return `
+              <div data-act-id="${item.meta.id}" tabindex="0" class="activity-picker-card nav-focus happy-card group bg-slate-950/70 hover:bg-slate-800/90 border-2 border-indigo-500/30 hover:${themeBorder} rounded-2xl p-5 flex flex-col justify-between cursor-pointer transition shadow-lg">
+                <div>
+                  <div class="flex items-start justify-between mb-2.5">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${themePill}">
+                      ${item.meta.badge || item.meta.id}
+                    </span>
+                    <span class="text-2xl">${item.meta.icon || catIcon}</span>
+                  </div>
+
+                  <h3 class="text-lg font-black text-white group-hover:text-amber-300 transition">
+                    ${itemTitle}
+                  </h3>
+
+                  <p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                    ${itemDesc}
+                  </p>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-slate-800/90">
+                  <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+                    <span class="font-mono text-sky-300 font-bold">${specText}</span>
+                    <span class="font-bold uppercase text-[10px] px-2 py-0.5 rounded border ${diffColor}">
+                      ${diff}
+                    </span>
+                  </div>
+
+                  ${bestBadge ? `
+                    <div class="text-[11px] text-amber-300 font-bold mb-2 flex items-center gap-1">
+                      ${bestBadge}
+                    </div>
+                  ` : ''}
+
+                  <button class="picker-play-btn nav-focus w-full py-2.5 rounded-xl font-black text-xs uppercase tracking-wider transition ${launchBtnClass} shadow">
+                    ${playBtnLabel}
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+      </div>
+    `;
+
+    this.openModal(modal);
+
+    const close = () => this.closeModal(modal);
+    modal.querySelector('#modal-close-btn')?.addEventListener('click', close);
+
+    // Bind card clicks
+    modal.querySelectorAll('.activity-picker-card').forEach((card) => {
+      const actId = card.getAttribute('data-act-id');
+      const startAction = () => {
+        close();
+        this.app.loadActivityFromLinks('', actId);
+      };
+
+      card.addEventListener('click', () => {
+        startAction();
+      });
+
+      card.querySelector('.picker-play-btn')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        startAction();
+      });
+
+      card.addEventListener('mouseenter', () => {
+        card.focus();
+      });
+    });
+  }
+
   showLoaderError(msg) {
     const box = document.getElementById('loader-error-box');
-    if (!box) return;
-    box.textContent = msg;
-    box.classList.remove('hidden');
+    if (box) {
+      box.textContent = msg;
+      box.classList.remove('hidden');
+    }
+    showToast(msg, 'error');
   }
 
   async loadCatalogList() {
@@ -558,10 +721,28 @@ export class UIManager {
       if (resp.ok) {
         this.catalogData = await resp.json();
         this.renderCatalogCards();
+        return;
       }
     } catch (e) {
-      console.warn('[UI] Could not load catalog:', e);
+      console.warn('[UI] Network catalog load bypassed, using built-ins:', e);
     }
+
+    // In-memory fallback guaranteeing instant offline catalog availability
+    this.catalogData = {
+      activities: Object.values(BUILTIN_ACTIVITIES).map(act => ({
+        id: act.meta.id,
+        type: act.type,
+        icon: act.meta.icon || '⭐',
+        title: act.meta.title,
+        description: act.meta.description,
+        duration: act.duration,
+        difficulty: act.meta.difficulty || 'medium',
+        scriptUrl: act.meta.id,
+        youtubeUrl: '',
+        badge: act.meta.badge || act.type
+      }))
+    };
+    this.renderCatalogCards();
   }
 
   renderCatalogCards() {

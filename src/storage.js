@@ -267,7 +267,18 @@ export const I18N = {
     normalMode: 'Simple & Fun',
     advancedMode: 'Advanced',
     expertMode: 'Expert / Dev',
-    navHint: 'Use Arrow Keys / D-Pad + Enter to Navigate'
+    navHint: 'Use Arrow Keys / D-Pad + Enter to Navigate',
+    selectGame: 'Select an Action Game',
+    selectWalk: 'Select a Virtual Walk',
+    selectCardio: 'Select a Cardio Workout',
+    chooseActivity: 'Choose Your Adventure',
+    backToHome: 'Back to Menu',
+    playGame: 'Play Game →',
+    startWalk: 'Start Walk →',
+    startWorkout: 'Start Workout →',
+    allGames: 'Available Action Games',
+    allWalks: 'Scenic Virtual Routes',
+    allCardio: 'Guided Treadmill Programs'
   },
   fr: {
     appTitle: 'FloorMat Studio TV',
@@ -330,7 +341,18 @@ export const I18N = {
     normalMode: 'Simple & Amusant',
     advancedMode: 'Avancé',
     expertMode: 'Expert / Dév',
-    navHint: 'Flèches directionnelles / Manette + Entrée'
+    navHint: 'Flèches directionnelles / Manette + Entrée',
+    selectGame: 'Choisir un Jeu d\'Action',
+    selectWalk: 'Choisir une Balade Virtuelle',
+    selectCardio: 'Choisir un Entraînement Cardio',
+    chooseActivity: 'Choisissez Votre Aventure',
+    backToHome: 'Retour au Menu',
+    playGame: 'Jouer →',
+    startWalk: 'Commencer la Balade →',
+    startWorkout: 'Commencer l\'Entraînement →',
+    allGames: 'Jeux d\'Action Disponibles',
+    allWalks: 'Parcours Virtuels Panoramiques',
+    allCardio: 'Programmes Tapis Guidés'
   },
   ar: {
     appTitle: 'FloorMat Studio TV',
@@ -393,7 +415,18 @@ export const I18N = {
     normalMode: 'بسيط وممتع',
     advancedMode: 'متقدم',
     expertMode: 'خبير ومطور',
-    navHint: 'استخدم الأسهم / يد التحكم + Enter للتنقل'
+    navHint: 'استخدم الأسهم / يد التحكم + Enter للتنقل',
+    selectGame: 'اختر لعبة حركية',
+    selectWalk: 'اختر مساراً افتراضياً',
+    selectCardio: 'اختر تمرين كارديو',
+    chooseActivity: 'اختر مغامرتك',
+    backToHome: 'رجوع للقائمة',
+    playGame: 'العب الآن ←',
+    startWalk: 'ابدأ المسار ←',
+    startWorkout: 'ابدأ التمرين ←',
+    allGames: 'الألعاب الحركية المتوفرة',
+    allWalks: 'المسارات الطبيعية الخلابة',
+    allCardio: 'برامج الجري الموجهة'
   }
 };
 

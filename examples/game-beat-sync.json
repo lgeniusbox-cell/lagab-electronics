@@ -1,0 +1,66 @@
+{
+  "type": "game",
+  "meta": {
+    "id": "game-beat-sync",
+    "title": {
+      "en": "Beat Sync: Rhythm Arena",
+      "fr": "Beat Sync : Arène Rythmique",
+      "ar": "تزامن الإيقاع: حلبة النغمات"
+    },
+    "description": {
+      "en": "Fast-paced floor mat rhythm trainer! Synchronize rapid lane switches, high jumps, and duck slides.",
+      "fr": "Entraînement rythmique effréné ! Enchaînez changements de couloir, sauts et glissades.",
+      "ar": "مدرب الإيقاع السريع على السجادة! تزامن مع تبديل المسارات السريع والقفزات العالية والانزلاقات."
+    },
+    "duration": 60,
+    "difficulty": "hard",
+    "version": "1.0.0"
+  },
+  "video": {
+    "youtubeId": "",
+    "src": "",
+    "startAt": 0,
+    "endAt": 60
+  },
+  "rules": {
+    "lives": 4,
+    "comboMultipliers": [1, 2, 4, 8],
+    "starsThresholds": [900, 1800, 2800],
+    "intensityMapping": {
+      "minRate": 1.0,
+      "maxRate": 1.5,
+      "steps": [1.0, 1.25, 1.5]
+    }
+  },
+  "effects": {},
+  "timeline": [
+    { "t": 1.0, "type": "overlay", "text": "BEAT SYNC: TECHNO ARENA", "duration": 2.0, "position": "center", "color": "#a855f7", "animation": "pop" },
+    { "t": 3.0, "type": "sound", "preset": "countdown" },
+    { "t": 5.0, "type": "action", "expect": "CENTER", "windowMs": 300, "perfectWindowMs": 120, "warnBeforeMs": 1500, "points": 100, "onSuccess": { "sound": "good" } },
+    { "t": 8.0, "type": "action", "expect": "LEFT", "windowMs": 300, "perfectWindowMs": 120, "warnBeforeMs": 1400, "points": 100, "onSuccess": { "sound": "good" } },
+    { "t": 11.0, "type": "action", "expect": "RIGHT", "windowMs": 300, "perfectWindowMs": 120, "warnBeforeMs": 1400, "points": 100, "onSuccess": { "sound": "good" } },
+    { "t": 14.0, "type": "action", "expect": "CENTER", "windowMs": 300, "perfectWindowMs": 120, "warnBeforeMs": 1300, "points": 100, "onSuccess": { "sound": "good" } },
+    { "t": 17.0, "type": "action", "expect": "JUMP", "windowMs": 280, "perfectWindowMs": 110, "warnBeforeMs": 1300, "points": 150, "onSuccess": { "effect": "flash", "sound": "jump" } },
+    { "t": 20.5, "type": "action", "expect": "SLIDE", "windowMs": 280, "perfectWindowMs": 110, "warnBeforeMs": 1300, "points": 150, "onSuccess": { "effect": "borderGlow", "sound": "slide" } },
+    { "t": 24.0, "type": "action", "expect": "LEFT", "windowMs": 260, "perfectWindowMs": 100, "warnBeforeMs": 1200, "points": 120, "onSuccess": { "sound": "good" } },
+    { "t": 26.5, "type": "action", "expect": "JUMP", "windowMs": 260, "perfectWindowMs": 100, "warnBeforeMs": 1200, "points": 150, "onSuccess": { "sound": "jump" } },
+    { "t": 29.0, "type": "action", "expect": "RIGHT", "windowMs": 260, "perfectWindowMs": 100, "warnBeforeMs": 1200, "points": 120, "onSuccess": { "sound": "good" } },
+    { "t": 31.5, "type": "action", "expect": "SLIDE", "windowMs": 260, "perfectWindowMs": 100, "warnBeforeMs": 1200, "points": 150, "onSuccess": { "sound": "slide" } },
+    { "t": 35.0, "type": "checkpoint", "id": "cp_beat", "name": "Drop Checkpoint" },
+    { "t": 37.0, "type": "overlay", "text": "DOUBLE COMBO DROP!", "duration": 2.0, "position": "center", "color": "#f59e0b", "animation": "shake" },
+    { "t": 40.0, "type": "action", "expect": "JUMP", "windowMs": 250, "perfectWindowMs": 90, "warnBeforeMs": 1100, "points": 180, "onSuccess": { "sound": "jump" } },
+    { "t": 43.0, "type": "action", "expect": "JUMP", "windowMs": 250, "perfectWindowMs": 90, "warnBeforeMs": 1000, "points": 180, "onSuccess": { "sound": "jump" } },
+    { "t": 47.0, "type": "action", "expect": "SLIDE", "windowMs": 250, "perfectWindowMs": 90, "warnBeforeMs": 1000, "points": 180, "onSuccess": { "sound": "slide" } },
+    { "t": 51.0, "type": "action", "expect": "LEFT", "windowMs": 250, "perfectWindowMs": 90, "warnBeforeMs": 1000, "points": 150, "onSuccess": { "sound": "good" } },
+    { "t": 53.5, "type": "action", "expect": "RIGHT", "windowMs": 250, "perfectWindowMs": 90, "warnBeforeMs": 1000, "points": 150, "onSuccess": { "sound": "good" } },
+    { "t": 57.0, "type": "action", "expect": "JUMP", "windowMs": 300, "perfectWindowMs": 120, "warnBeforeMs": 1200, "points": 250, "onSuccess": { "sound": "win" } }
+  ],
+  "sections": [
+    { "name": "Build Up", "start": 0, "end": 35 },
+    { "name": "The Drop", "start": 36, "end": 60 }
+  ],
+  "endings": {
+    "victorySound": "win",
+    "defeatSound": "lose"
+  }
+}

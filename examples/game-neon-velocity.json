@@ -1,0 +1,62 @@
+{
+  "type": "game",
+  "meta": {
+    "id": "game-neon-velocity",
+    "title": {
+      "en": "Neon Velocity: Highway Run",
+      "fr": "Neon Velocity : Course d'Autoroute",
+      "ar": "السرعة النيونية: طريق المستقبل السريع"
+    },
+    "description": {
+      "en": "Run fast on your mat! Foot intensity modulates speed from 0.75x to 1.5x while dodging hurdles and laser beams.",
+      "fr": "Courez vite sur le tapis ! La cadence accélère la vitesse tout en esquivant lasers et barrières.",
+      "ar": "اركض بسرعة على سجادتك! يرفع إيقاع خطواتك سرعة الحركة مع تفادي حواجز الليزر والعوائق."
+    },
+    "duration": 75,
+    "difficulty": "medium",
+    "version": "1.0.0"
+  },
+  "video": {
+    "youtubeId": "",
+    "src": "",
+    "startAt": 0,
+    "endAt": 75
+  },
+  "rules": {
+    "lives": 3,
+    "comboMultipliers": [1, 2, 3, 5],
+    "starsThresholds": [700, 1500, 2300],
+    "intensityMapping": {
+      "minRate": 0.75,
+      "maxRate": 1.5,
+      "steps": [0.75, 1.0, 1.25, 1.5]
+    }
+  },
+  "effects": {},
+  "timeline": [
+    { "t": 1.0, "type": "overlay", "text": "IGNITION! ACCELERATE!", "duration": 2.0, "position": "center", "color": "#06b6d4", "animation": "pop" },
+    { "t": 4.0, "type": "action", "expect": "CENTER", "windowMs": 350, "perfectWindowMs": 150, "warnBeforeMs": 1500, "points": 100, "onSuccess": { "sound": "good" } },
+    { "t": 8.0, "type": "action", "expect": "LEFT", "windowMs": 350, "perfectWindowMs": 150, "warnBeforeMs": 1500, "points": 100, "onSuccess": { "sound": "good" } },
+    { "t": 12.0, "type": "action", "expect": "JUMP", "windowMs": 320, "perfectWindowMs": 140, "warnBeforeMs": 1400, "points": 120, "onSuccess": { "sound": "jump" } },
+    { "t": 16.5, "type": "action", "expect": "RIGHT", "windowMs": 320, "perfectWindowMs": 140, "warnBeforeMs": 1400, "points": 120, "onSuccess": { "sound": "good" } },
+    { "t": 21.0, "type": "action", "expect": "SLIDE", "windowMs": 320, "perfectWindowMs": 140, "warnBeforeMs": 1400, "points": 120, "onSuccess": { "sound": "slide" } },
+    { "t": 26.0, "type": "video", "action": "setRate", "rate": 1.25 },
+    { "t": 27.0, "type": "overlay", "text": "HYPERSPEED ENGAGED!", "duration": 2.0, "position": "top", "color": "#38bdf8", "animation": "fade" },
+    { "t": 30.0, "type": "action", "expect": "STEP_LEFT", "windowMs": 350, "perfectWindowMs": 150, "warnBeforeMs": 1200, "points": 90, "onSuccess": { "sound": "good" } },
+    { "t": 33.0, "type": "action", "expect": "STEP_RIGHT", "windowMs": 350, "perfectWindowMs": 150, "warnBeforeMs": 1200, "points": 90, "onSuccess": { "sound": "good" } },
+    { "t": 37.0, "type": "action", "expect": "JUMP", "windowMs": 300, "perfectWindowMs": 130, "warnBeforeMs": 1200, "points": 150, "onSuccess": { "sound": "jump" } },
+    { "t": 42.0, "type": "action", "expect": "SLIDE", "windowMs": 300, "perfectWindowMs": 130, "warnBeforeMs": 1200, "points": 150, "onSuccess": { "sound": "slide" } },
+    { "t": 48.0, "type": "action", "expect": "CENTER", "windowMs": 320, "perfectWindowMs": 130, "warnBeforeMs": 1300, "points": 100, "onSuccess": { "sound": "good" } },
+    { "t": 54.0, "type": "action", "expect": "LEFT", "windowMs": 300, "perfectWindowMs": 120, "warnBeforeMs": 1200, "points": 120, "onSuccess": { "sound": "good" } },
+    { "t": 60.0, "type": "action", "expect": "RIGHT", "windowMs": 300, "perfectWindowMs": 120, "warnBeforeMs": 1200, "points": 120, "onSuccess": { "sound": "good" } },
+    { "t": 68.0, "type": "action", "expect": "JUMP", "windowMs": 320, "perfectWindowMs": 140, "warnBeforeMs": 1300, "points": 200, "onSuccess": { "sound": "win" } }
+  ],
+  "sections": [
+    { "name": "Cruise", "start": 0, "end": 26 },
+    { "name": "Hyperspeed", "start": 27, "end": 75 }
+  ],
+  "endings": {
+    "victorySound": "win",
+    "defeatSound": "lose"
+  }
+}

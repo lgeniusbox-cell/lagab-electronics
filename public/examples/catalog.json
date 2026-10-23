@@ -3,25 +3,87 @@
     {
       "id": "game-cyber-runner",
       "type": "game",
+      "icon": "⚡",
       "title": {
         "en": "Neon Beat Runner",
         "fr": "Course Rythmique Néon",
         "ar": "عدّاء الإيقاع النيوني"
       },
       "description": {
-        "en": "Dodge obstacles, jump over hurdles, and hit high-energy rhythm gates on the interactive mat.",
-        "fr": "Évitez les obstacles, sautez les barrières et frappez les portes de rythme sur le tapis interactif.",
-        "ar": "تفاد الحواجز، اقفز فوق العقبات، واضرب بوابات الإيقاع النشطة على السجادة التفاعلية."
+        "en": "Hit musical gates, leap hurdles, and duck under energy beams with precision mat timing.",
+        "fr": "Franchissez des portes musicales, sautez des haies et esquivez les lasers en rythme.",
+        "ar": "اعبر بوابات النغمات الموسيقية، واقفز فوق الحواجز، وانحنِ تحت أشعة الطاقة بدقة وتوقيت مثالي."
       },
       "duration": 90,
       "difficulty": "medium",
-      "scriptUrl": "./examples/game-cyber-runner.json",
+      "scriptUrl": "game-cyber-runner",
       "youtubeUrl": "",
       "badge": "Action Game"
     },
     {
+      "id": "game-beat-sync",
+      "type": "game",
+      "icon": "🎵",
+      "title": {
+        "en": "Beat Sync: Rhythm Arena",
+        "fr": "Beat Sync : Arène Rythmique",
+        "ar": "تزامن الإيقاع: حلبة النغمات"
+      },
+      "description": {
+        "en": "Fast-paced floor mat rhythm trainer! Synchronize rapid lane switches, high jumps, and duck slides.",
+        "fr": "Entraînement rythmique effréné ! Enchaînez changements de couloir, sauts et glissades.",
+        "ar": "مدرب الإيقاع السريع على السجادة! تزامن مع تبديل المسارات السريع والقفزات العالية والانزلاقات."
+      },
+      "duration": 60,
+      "difficulty": "hard",
+      "scriptUrl": "game-beat-sync",
+      "youtubeUrl": "",
+      "badge": "Techno 130 BPM"
+    },
+    {
+      "id": "game-neon-velocity",
+      "type": "game",
+      "icon": "🏎️",
+      "title": {
+        "en": "Neon Velocity: Highway Run",
+        "fr": "Neon Velocity : Course d'Autoroute",
+        "ar": "السرعة النيونية: طريق المستقبل السريع"
+      },
+      "description": {
+        "en": "Run fast on your mat! Foot intensity modulates speed from 0.75x to 1.5x while dodging hurdles and laser beams.",
+        "fr": "Courez vite sur le tapis ! La cadence accélère la vitesse tout en esquivant lasers et barrières.",
+        "ar": "اركض بسرعة على سجادتك! يرفع إيقاع خطواتك سرعة الحركة مع تفادي حواجز الليزر والعوائق."
+      },
+      "duration": 75,
+      "difficulty": "medium",
+      "scriptUrl": "game-neon-velocity",
+      "youtubeUrl": "",
+      "badge": "Speed Modulated"
+    },
+    {
+      "id": "game-cyber-shinobi",
+      "type": "game",
+      "icon": "🥷",
+      "title": {
+        "en": "Shinobi Path: Forest Trial",
+        "fr": "Shinobi Path : L'Épreuve Sylvestre",
+        "ar": "مسار النينجا: اختبار الغابة"
+      },
+      "description": {
+        "en": "Kid-friendly ninja adventure! Jump over bamboo logs, crouch under swinging lanterns, and test quick reflexes.",
+        "fr": "Aventure ninja idéale pour toute la famille ! Sautez par-dessus les bambous et baissez-vous sous les lanternes.",
+        "ar": "مغامرة نينجا ممتعة لجميع أفراد العائلة! اقفز فوق جذوع الخيزران وانحنِ تحت الفوانيس المعلقة واختبر ردود أفعالك."
+      },
+      "duration": 60,
+      "difficulty": "easy",
+      "scriptUrl": "game-cyber-shinobi",
+      "youtubeUrl": "",
+      "badge": "Family / Fun"
+    },
+    {
       "id": "walk-alpine-trail",
       "type": "walk",
+      "icon": "🏔️",
       "title": {
         "en": "Scenic Alpine Trail Walk",
         "fr": "Balade Alpine Panoramique",
@@ -34,13 +96,54 @@
       },
       "duration": 600,
       "difficulty": "easy",
-      "scriptUrl": "./examples/walk-alpine-trail.json",
+      "scriptUrl": "walk-alpine-trail",
       "youtubeUrl": "",
       "badge": "Virtual Walk"
     },
     {
+      "id": "walk-tokyo-night",
+      "type": "walk",
+      "icon": "🏮",
+      "title": {
+        "en": "Tokyo Neon Night Walk",
+        "fr": "Balade Nocturne à Tokyo",
+        "ar": "مسار طوكيو الليلي المتلألئ"
+      },
+      "description": {
+        "en": "An 8-minute journey across illuminated pedestrian crossings, retro arcade alleys, and serene shrines.",
+        "fr": "Un parcours de 8 minutes entre passages piétons illuminés, ruelles rétro et sanctuaires paisibles.",
+        "ar": "رحلة مشي لمدة 8 دقائق عبر ممرات المشاة المضاءة وأزقة ألعاب الأركيد الكلاسيكية والمعابد الهادئة."
+      },
+      "duration": 480,
+      "difficulty": "easy",
+      "scriptUrl": "walk-tokyo-night",
+      "youtubeUrl": "",
+      "badge": "City Discovery"
+    },
+    {
+      "id": "walk-sunny-beach",
+      "type": "walk",
+      "icon": "🌴",
+      "title": {
+        "en": "Sunset Coastline Stride",
+        "fr": "Foulée Côtière au Couchant",
+        "ar": "مسار الشاطئ عند الغروب"
+      },
+      "description": {
+        "en": "A relaxing 12-minute seaside stroll on a wooden boardwalk with rolling waves, dunes, and lighthouse views.",
+        "fr": "Une agréable promenade de 12 minutes sur ponton en bois avec vagues douces et phare marin.",
+        "ar": "نزهة شاطئية مريحة لمدة 12 دقيقة على ممشى خشبي وسط هدير الأمواج والنسيم البحري ومنارة الشاطئ."
+      },
+      "duration": 720,
+      "difficulty": "easy",
+      "scriptUrl": "walk-sunny-beach",
+      "youtubeUrl": "",
+      "badge": "Ocean Breeze"
+    },
+    {
       "id": "cardio-interval-burn",
       "type": "cardio",
+      "icon": "🔥",
       "title": {
         "en": "HIIT Treadmill Interval Burn",
         "fr": "Brûleur HIIT par Intervalles",
@@ -53,9 +156,50 @@
       },
       "duration": 1200,
       "difficulty": "hard",
-      "scriptUrl": "./examples/cardio-interval-burn.json",
+      "scriptUrl": "cardio-interval-burn",
       "youtubeUrl": "",
       "badge": "Smart Cardio"
+    },
+    {
+      "id": "cardio-steady-endurance",
+      "type": "cardio",
+      "icon": "⏱️",
+      "title": {
+        "en": "Steady Aerobic Builder",
+        "fr": "Endurance Aérobie Régulière",
+        "ar": "بناء التحمل الهوائي المستقر"
+      },
+      "description": {
+        "en": "A comfortable 15-minute steady rhythm workout designed for consistent aerobic conditioning and calorie burning.",
+        "fr": "Séance accessible de 15 minutes à rythme régulier pour renforcer l'endurance et brûler des calories.",
+        "ar": "تمرين مريح لمدة 15 دقيقة بإيقاع ثابت مصمم لتعزيز اللياقة الهوائية وحرق السعرات الحرارية."
+      },
+      "duration": 900,
+      "difficulty": "medium",
+      "scriptUrl": "cardio-steady-endurance",
+      "youtubeUrl": "",
+      "badge": "Steady Aerobic"
+    },
+    {
+      "id": "cardio-pyramid-power",
+      "type": "cardio",
+      "icon": "⛰️",
+      "badge": "Pyramid Climb",
+      "title": {
+        "en": "Pyramid Power Climb",
+        "fr": "Montée Pyramide Puissance",
+        "ar": "صعود هرم الطاقة"
+      },
+      "description": {
+        "en": "A 12-minute step-by-step pyramid climbing workout ramping tempo every 2 minutes up to peak intensity and stepping down.",
+        "fr": "Un parcours de 12 minutes en pyramide qui monte en intensité toutes les 2 minutes jusqu'au sommet avant de redescendre.",
+        "ar": "تمرين هرمي لمدة 12 دقيقة يصعد بالإيقاع كل دقيقتين حتى ذروة الشدة ثم يتدرج هبوطاً."
+      },
+      "duration": 720,
+      "difficulty": "hard",
+      "scriptUrl": "cardio-pyramid-power",
+      "youtubeUrl": "",
+      "badge": "Pyramid Climb"
     }
   ]
 }

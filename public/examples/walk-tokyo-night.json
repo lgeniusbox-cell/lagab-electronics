@@ -1,0 +1,57 @@
+{
+  "type": "walk",
+  "meta": {
+    "id": "walk-tokyo-night",
+    "title": {
+      "en": "Tokyo Neon Night Walk",
+      "fr": "Balade Nocturne à Tokyo",
+      "ar": "مسار طوكيو الليلي المتلألئ"
+    },
+    "description": {
+      "en": "An 8-minute journey across illuminated pedestrian crossings, retro arcade alleys, and serene shrines.",
+      "fr": "Un parcours de 8 minutes entre passages piétons illuminés, ruelles rétro et sanctuaires paisibles.",
+      "ar": "رحلة مشي لمدة 8 دقائق عبر ممرات المشاة المضاءة وأزقة ألعاب الأركيد الكلاسيكية والمعابد الهادئة."
+    },
+    "duration": 480,
+    "difficulty": "easy",
+    "version": "1.0.0"
+  },
+  "video": {
+    "youtubeId": "",
+    "src": "",
+    "startAt": 0,
+    "endAt": 480
+  },
+  "rules": {
+    "goalType": "steps",
+    "goalValue": 800,
+    "referenceCadence": 95,
+    "idleTimeoutMs": 3000,
+    "idleResumeGraceMs": 1500,
+    "cadenceRateMapping": [
+      { "cadenceMin": 0, "cadenceMax": 40, "rate": 0.5 },
+      { "cadenceMin": 41, "cadenceMax": 75, "rate": 0.75 },
+      { "cadenceMin": 76, "cadenceMax": 105, "rate": 1.0 },
+      { "cadenceMin": 106, "cadenceMax": 130, "rate": 1.25 },
+      { "cadenceMin": 131, "cadenceMax": 999, "rate": 1.5 }
+    ],
+    "milestones": [
+      { "type": "steps", "value": 200, "message": "Entering the neon avenue! 200 Steps.", "effect": "flash" },
+      { "type": "steps", "value": 400, "message": "Halfway through Tokyo Night! 400 Steps.", "effect": "particles" },
+      { "type": "steps", "value": 600, "message": "600 Steps! Crossing the grand boulevard.", "effect": "borderGlow" },
+      { "type": "steps", "value": 800, "message": "Tokyo Night Walk Completed! Great stride!", "effect": "zoomPulse" }
+    ],
+    "pointsOfInterest": [
+      { "t": 15.0, "duration": 8.0, "title": "Shibuya Crossing Entrance", "description": "Iconic world intersection glowing with towering multi-story animated billboards.", "icon": "compass" },
+      { "t": 100.0, "duration": 8.0, "title": "Traditional Ramen Alley", "description": "Cozy noodle shops with crimson paper lanterns and fragrant steaming broth.", "icon": "cup" },
+      { "t": 220.0, "duration": 8.0, "title": "Akihabara Electric Arcade", "description": "Dazzling multi-level retro arcades celebrating decades of gaming culture.", "icon": "sparkle" },
+      { "t": 340.0, "duration": 8.0, "title": "Quiet Shinto Garden Shrine", "description": "Warm stone lanterns and moss gardens nestled peacefully between towers.", "icon": "temple" },
+      { "t": 420.0, "duration": 8.0, "title": "Sumida River Sky View", "description": "Cool breeze from the river with stunning panoramic reflections.", "icon": "water" }
+    ]
+  },
+  "effects": {},
+  "timeline": [],
+  "endings": {
+    "victorySound": "win"
+  }
+}

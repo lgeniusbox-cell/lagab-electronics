@@ -1,0 +1,57 @@
+{
+  "type": "game",
+  "meta": {
+    "id": "game-cyber-shinobi",
+    "title": {
+      "en": "Shinobi Path: Forest Trial",
+      "fr": "Shinobi Path : L'Épreuve Sylvestre",
+      "ar": "مسار النينجا: اختبار الغابة"
+    },
+    "description": {
+      "en": "Kid-friendly ninja adventure! Jump over bamboo logs, crouch under swinging lanterns, and test quick reflexes.",
+      "fr": "Aventure ninja idéale pour toute la famille ! Sautez par-dessus les bambous et baissez-vous sous les lanternes.",
+      "ar": "مغامرة نينجا ممتعة لجميع أفراد العائلة! اقفز فوق جذوع الخيزران وانحنِ تحت الفوانيس المعلقة واختبر ردود أفعالك."
+    },
+    "duration": 60,
+    "difficulty": "easy",
+    "version": "1.0.0"
+  },
+  "video": {
+    "youtubeId": "",
+    "src": "",
+    "startAt": 0,
+    "endAt": 60
+  },
+  "rules": {
+    "lives": 5,
+    "comboMultipliers": [1, 2, 3],
+    "starsThresholds": [500, 1000, 1500],
+    "intensityMapping": {
+      "minRate": 0.8,
+      "maxRate": 1.2,
+      "steps": [0.8, 1.0, 1.2]
+    }
+  },
+  "effects": {},
+  "timeline": [
+    { "t": 1.0, "type": "overlay", "text": "SHINOBI TRIAL BEGINS!", "duration": 2.5, "position": "center", "color": "#10b981", "animation": "pop" },
+    { "t": 4.5, "type": "action", "expect": "CENTER", "windowMs": 400, "perfectWindowMs": 180, "warnBeforeMs": 1800, "points": 80, "onSuccess": { "sound": "good" } },
+    { "t": 9.0, "type": "action", "expect": "JUMP", "windowMs": 380, "perfectWindowMs": 160, "warnBeforeMs": 1700, "points": 100, "onSuccess": { "sound": "jump" } },
+    { "t": 14.0, "type": "action", "expect": "SLIDE", "windowMs": 380, "perfectWindowMs": 160, "warnBeforeMs": 1700, "points": 100, "onSuccess": { "sound": "slide" } },
+    { "t": 19.0, "type": "action", "expect": "LEFT", "windowMs": 380, "perfectWindowMs": 160, "warnBeforeMs": 1600, "points": 80, "onSuccess": { "sound": "good" } },
+    { "t": 23.5, "type": "action", "expect": "RIGHT", "windowMs": 380, "perfectWindowMs": 160, "warnBeforeMs": 1600, "points": 80, "onSuccess": { "sound": "good" } },
+    { "t": 28.0, "type": "action", "expect": "CENTER", "windowMs": 380, "perfectWindowMs": 160, "warnBeforeMs": 1500, "points": 80, "onSuccess": { "sound": "good" } },
+    { "t": 33.0, "type": "overlay", "text": "SHADOW LEAP!", "duration": 2.0, "position": "center", "color": "#34d399", "animation": "pulse" },
+    { "t": 36.0, "type": "action", "expect": "JUMP", "windowMs": 360, "perfectWindowMs": 150, "warnBeforeMs": 1500, "points": 120, "onSuccess": { "sound": "jump" } },
+    { "t": 41.0, "type": "action", "expect": "SLIDE", "windowMs": 360, "perfectWindowMs": 150, "warnBeforeMs": 1500, "points": 120, "onSuccess": { "sound": "slide" } },
+    { "t": 46.5, "type": "action", "expect": "ANY", "windowMs": 450, "perfectWindowMs": 200, "warnBeforeMs": 1600, "points": 150, "onSuccess": { "sound": "coin" } },
+    { "t": 53.0, "type": "action", "expect": "JUMP", "windowMs": 380, "perfectWindowMs": 160, "warnBeforeMs": 1600, "points": 200, "onSuccess": { "sound": "win" } }
+  ],
+  "sections": [
+    { "name": "Forest Trail", "start": 0, "end": 60 }
+  ],
+  "endings": {
+    "victorySound": "win",
+    "defeatSound": "lose"
+  }
+}

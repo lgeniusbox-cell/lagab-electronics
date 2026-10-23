@@ -1,0 +1,82 @@
+{
+  "type": "cardio",
+  "meta": {
+    "id": "cardio-pyramid-power",
+    "title": {
+      "en": "Pyramid Power Climb",
+      "fr": "Montée Pyramide Puissance",
+      "ar": "صعود هرم الطاقة"
+    },
+    "description": {
+      "en": "A 12-minute step-by-step pyramid climbing workout ramping tempo every 2 minutes up to peak intensity and stepping down.",
+      "fr": "Un parcours de 12 minutes en pyramide qui monte en intensité toutes les 2 minutes jusqu'au sommet avant de redescendre.",
+      "ar": "تمرين هرمي لمدة 12 دقيقة يصعد بالإيقاع كل دقيقتين حتى ذروة الشدة ثم يتدرج هبوطاً."
+    },
+    "duration": 720,
+    "difficulty": "hard",
+    "version": "1.0.0"
+  },
+  "rules": {
+    "adaptive": true,
+    "cueCooldownSec": 8,
+    "metronome": false,
+    "countdownBeepSec": 3,
+    "program": [
+      {
+        "name": "Base Tier 1",
+        "durationSec": 120,
+        "target": { "cadence": [75, 95], "speedKmh": [3.2, 4.2] },
+        "message": {
+          "en": "Pyramid Step 1: Moderate warm-up pace.",
+          "fr": "Étage 1 : Échauffement à allure modérée.",
+          "ar": "المستوى الأول: وتيرة إحماء معتدلة."
+        }
+      },
+      {
+        "name": "Climb Tier 2",
+        "durationSec": 120,
+        "target": { "cadence": [105, 125], "speedKmh": [4.6, 5.8] },
+        "message": {
+          "en": "Pyramid Step 2: Ramping up the tempo!",
+          "fr": "Étage 2 : Accélération progressive !",
+          "ar": "المستوى الثاني: زيادة تصاعدية في الإيقاع!"
+        }
+      },
+      {
+        "name": "Peak Tier 3",
+        "durationSec": 150,
+        "target": { "cadence": [140, 170], "speedKmh": [6.0, 7.8] },
+        "message": {
+          "en": "THE PYRAMID PEAK! Maximum intensity drive!",
+          "fr": "LE SOMMET DE LA PYRAMIDE ! Intensité maximale !",
+          "ar": "قمة الهرم! أقصى درجات الطاقة والجهد!"
+        }
+      },
+      {
+        "name": "Descent Tier 4",
+        "durationSec": 150,
+        "target": { "cadence": [100, 120], "speedKmh": [4.4, 5.4] },
+        "message": {
+          "en": "Step down the mountain. Steady aerobic recovery.",
+          "fr": "Descente progressive. Récupération active et régulière.",
+          "ar": "النزول التدريجي. استعادة لياقة هوائية ثابتة."
+        }
+      },
+      {
+        "name": "Base Cool-down",
+        "durationSec": 180,
+        "target": { "cadence": [60, 80], "speedKmh": [2.5, 3.5] },
+        "message": {
+          "en": "Pyramid conquered! Relax your arms and catch your breath.",
+          "fr": "Pyramide gravie avec succès ! Relâchez les bras et respirez.",
+          "ar": "تم تسلق الهرم بنجاح! ارخِ ذراعيك واستعد أنفاسك."
+        }
+      }
+    ]
+  },
+  "effects": {},
+  "timeline": [],
+  "endings": {
+    "victorySound": "win"
+  }
+}

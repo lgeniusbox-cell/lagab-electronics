@@ -1,0 +1,82 @@
+{
+  "type": "cardio",
+  "meta": {
+    "id": "cardio-steady-endurance",
+    "title": {
+      "en": "Steady Aerobic Builder",
+      "fr": "Endurance Aérobie Régulière",
+      "ar": "بناء التحمل الهوائي المستقر"
+    },
+    "description": {
+      "en": "A comfortable 15-minute steady rhythm workout designed for consistent aerobic conditioning and calorie burning.",
+      "fr": "Séance accessible de 15 minutes à rythme régulier pour renforcer l'endurance et brûler des calories.",
+      "ar": "تمرين مريح لمدة 15 دقيقة بإيقاع ثابت مصمم لتعزيز اللياقة الهوائية وحرق السعرات الحرارية."
+    },
+    "duration": 900,
+    "difficulty": "medium",
+    "version": "1.0.0"
+  },
+  "rules": {
+    "adaptive": true,
+    "cueCooldownSec": 8,
+    "metronome": false,
+    "countdownBeepSec": 3,
+    "program": [
+      {
+        "name": "Warm-up",
+        "durationSec": 180,
+        "target": { "cadence": [70, 90], "speedKmh": [3.0, 4.0] },
+        "message": {
+          "en": "Easy stepping to loosen up and prepare your body.",
+          "fr": "Pas légers pour vous délier et préparer le corps.",
+          "ar": "خطوات سهلة لتليين العضلات وتهيئة الجسم."
+        }
+      },
+      {
+        "name": "Cruising Zone 1",
+        "durationSec": 240,
+        "target": { "cadence": [95, 115], "speedKmh": [4.2, 5.2] },
+        "message": {
+          "en": "Find a sustainable aerobic pace. Breathe evenly.",
+          "fr": "Trouvez une vitesse de croisière agréable. Respirez calmement.",
+          "ar": "اعثر على وتيرة مريحة مستدامة. تنفس بانتظام."
+        }
+      },
+      {
+        "name": "Tempo Surge",
+        "durationSec": 180,
+        "target": { "cadence": [115, 135], "speedKmh": [5.0, 6.2] },
+        "message": {
+          "en": "Pick up the tempo slightly! Keep rhythm steady.",
+          "fr": "Augmentez légèrement le rythme ! Maintenez la cadence.",
+          "ar": "ارفع الإيقاع قليلاً! حافظ على ثبات خطواتك."
+        }
+      },
+      {
+        "name": "Cruising Zone 2",
+        "durationSec": 180,
+        "target": { "cadence": [95, 115], "speedKmh": [4.2, 5.2] },
+        "message": {
+          "en": "Return to cruising zone. Smooth and relaxed.",
+          "fr": "Retour à la zone de confort. Souple et décontracté.",
+          "ar": "عد لمنطقة الراحة والوتيرة المنتظمة. خطوات سلسة ومسترخية."
+        }
+      },
+      {
+        "name": "Cool-down",
+        "durationSec": 120,
+        "target": { "cadence": [60, 80], "speedKmh": [2.5, 3.5] },
+        "message": {
+          "en": "Gentle finish. Deep breaths as your heart rate settles.",
+          "fr": "Fin en douceur. Respirez profondément pendant la récupération.",
+          "ar": "ختام لطيف. تنفس بعمق مع استقرار نبضك."
+        }
+      }
+    ]
+  },
+  "effects": {},
+  "timeline": [],
+  "endings": {
+    "victorySound": "win"
+  }
+}
