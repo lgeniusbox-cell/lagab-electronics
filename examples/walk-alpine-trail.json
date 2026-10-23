@@ -1,0 +1,108 @@
+{
+  "type": "walk",
+  "meta": {
+    "id": "walk-alpine-trail",
+    "title": {
+      "en": "Scenic Alpine Trail Walk",
+      "fr": "Balade Alpine Panoramique",
+      "ar": "المسار الألبي البانورامي"
+    },
+    "description": {
+      "en": "A 10-minute virtual nature walk along mountain pines and glacial streams. Video playback rate syncs smoothly with your steps.",
+      "fr": "Une promenade virtuelle de 10 minutes à travers les pins de montagne et les ruisseaux glaciaires. La vitesse vidéo s'adapte à vos pas.",
+      "ar": "مسار طبيعي افتراضي لمدة 10 دقائق بين صنوبر الجبال وجداول المياه الجليدية. تتزامن سرعة الفيديو بسلاسة مع خطواتك."
+    },
+    "duration": 600,
+    "difficulty": "easy",
+    "version": "1.0.0"
+  },
+  "video": {
+    "youtubeId": "",
+    "src": "",
+    "startAt": 0,
+    "endAt": 600
+  },
+  "rules": {
+    "goalType": "steps",
+    "goalValue": 1000,
+    "referenceCadence": 100,
+    "idleTimeoutMs": 3000,
+    "idleResumeGraceMs": 1500,
+    "cadenceRateMapping": [
+      { "cadenceMin": 0, "cadenceMax": 40, "rate": 0.5 },
+      { "cadenceMin": 41, "cadenceMax": 75, "rate": 0.75 },
+      { "cadenceMin": 76, "cadenceMax": 105, "rate": 1.0 },
+      { "cadenceMin": 106, "cadenceMax": 130, "rate": 1.25 },
+      { "cadenceMin": 131, "cadenceMax": 155, "rate": 1.5 },
+      { "cadenceMin": 156, "cadenceMax": 999, "rate": 1.75 }
+    ],
+    "milestones": [
+      {
+        "type": "steps",
+        "value": 250,
+        "message": "Quarter-way achieved! Keep that steady stride.",
+        "effect": "flash"
+      },
+      {
+        "type": "steps",
+        "value": 500,
+        "message": "Halfway milestone reached! 500 Steps!",
+        "effect": "particles"
+      },
+      {
+        "type": "steps",
+        "value": 750,
+        "message": "750 Steps! Almost at the summit overlook.",
+        "effect": "borderGlow"
+      },
+      {
+        "type": "steps",
+        "value": 1000,
+        "message": "Goal Achieved! Outstanding Alpine trek!",
+        "effect": "zoomPulse"
+      }
+    ],
+    "pointsOfInterest": [
+      {
+        "t": 15.0,
+        "duration": 8.0,
+        "title": "Glacial Stream Crossing",
+        "description": "Clear meltwater flows down from the northern peaks, rich in pure alpine minerals.",
+        "icon": "water"
+      },
+      {
+        "t": 90.0,
+        "duration": 8.0,
+        "title": "Historic Timber Bridge",
+        "description": "Built in 1912 by valley mountain guides connecting old high-altitude sheep pastures.",
+        "icon": "bridge"
+      },
+      {
+        "t": 210.0,
+        "duration": 9.0,
+        "title": "Ancient Swiss Pine Grove",
+        "description": "Known as the King of the Alps, these hardy pines endure temperatures down to -40°C.",
+        "icon": "tree"
+      },
+      {
+        "t": 360.0,
+        "duration": 9.0,
+        "title": "Eagle Point Overlook",
+        "description": "Elevation 2,150 m. On clear mornings you can spot Golden Eagles circling the thermals.",
+        "icon": "mountain"
+      },
+      {
+        "t": 510.0,
+        "duration": 9.0,
+        "title": "High Alpine Refuge",
+        "description": "A welcome sanctuary serving hot tea and warm sourdough bread to weary travelers.",
+        "icon": "home"
+      }
+    ]
+  },
+  "effects": {},
+  "timeline": [],
+  "endings": {
+    "victorySound": "win"
+  }
+}

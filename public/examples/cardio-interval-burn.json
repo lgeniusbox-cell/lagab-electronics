@@ -1,0 +1,149 @@
+{
+  "type": "cardio",
+  "meta": {
+    "id": "cardio-interval-burn",
+    "title": {
+      "en": "HIIT Treadmill Interval Burn",
+      "fr": "Brûleur HIIT par Intervalles",
+      "ar": "حارق التمارين المتقطعة عالي الكثافة"
+    },
+    "description": {
+      "en": "A 20-minute guided interval workout featuring a 3-minute warm-up, 4 intense sprint & recovery rounds, and a 3-minute cool-down.",
+      "fr": "Un entraînement guidé par intervalles de 20 minutes comprenant 3 min d'échauffement, 4 séries de sprint et récupération, et 3 min de retour au calme.",
+      "ar": "تمرين فترات متقطعة موجه لمدة 20 دقيقة يتضمن 3 دقائق إحماء، 4 جولات ركض سريع واستعادة لياقة، و3 دقائق تهدئة."
+    },
+    "duration": 1200,
+    "difficulty": "hard",
+    "version": "1.0.0"
+  },
+  "rules": {
+    "adaptive": true,
+    "cueCooldownSec": 8,
+    "metronome": false,
+    "countdownBeepSec": 3,
+    "program": [
+      {
+        "name": "Warm-up",
+        "durationSec": 180,
+        "target": {
+          "cadence": [70, 95],
+          "speedKmh": [3.0, 4.5]
+        },
+        "message": {
+          "en": "Gentle marching in place to awaken your joints and raise core temperature.",
+          "fr": "Marche douce sur place pour réveiller les articulations et chauffer le corps.",
+          "ar": "مشية خفيفة في المكان لتنشيط المفاصل ورفع حرارة الجسم."
+        }
+      },
+      {
+        "name": "Sprint Round 1",
+        "durationSec": 90,
+        "target": {
+          "cadence": [135, 165],
+          "speedKmh": [5.8, 7.5]
+        },
+        "message": {
+          "en": "First power sprint! Pump your knees high and find a fast rhythm.",
+          "fr": "Premier sprint intense ! Montez les genoux et trouvez un rythme rapide.",
+          "ar": "الانطلاقة السريعة الأولى! ارفع الركبتين واعثر على إيقاع سريع."
+        }
+      },
+      {
+        "name": "Active Recovery 1",
+        "durationSec": 120,
+        "target": {
+          "cadence": [75, 95],
+          "speedKmh": [3.2, 4.2]
+        },
+        "message": {
+          "en": "Catch your breath with steady, easy stepping. Deep inhales.",
+          "fr": "Reprenez votre souffle avec des pas réguliers et tranquilles. Inspirez profondément.",
+          "ar": "استرجع أنفاسك بخطوات ثابتة وسهلة. تنفس بعمق."
+        }
+      },
+      {
+        "name": "Sprint Round 2",
+        "durationSec": 90,
+        "target": {
+          "cadence": [140, 170],
+          "speedKmh": [6.0, 7.8]
+        },
+        "message": {
+          "en": "Accelerate! Push your tempo into the green target band.",
+          "fr": "Accélérez ! Poussez votre tempo dans la zone verte cible.",
+          "ar": "تسارع! ادفع إيقاعك داخل النطاق الأخضر المستهدف."
+        }
+      },
+      {
+        "name": "Active Recovery 2",
+        "durationSec": 120,
+        "target": {
+          "cadence": [75, 95],
+          "speedKmh": [3.2, 4.2]
+        },
+        "message": {
+          "en": "Ease off the gas. Maintain light foot contact and relax your shoulders.",
+          "fr": "Relâchez la pression. Gardez des appuis légers et détendez les épaules.",
+          "ar": "خفف الجهد. حافظ على تلامس خفيف واسترخاء الكتفين."
+        }
+      },
+      {
+        "name": "Sprint Round 3",
+        "durationSec": 90,
+        "target": {
+          "cadence": [140, 170],
+          "speedKmh": [6.0, 7.8]
+        },
+        "message": {
+          "en": "Round three! Keep your cadence rock solid and stay tall.",
+          "fr": "Troisième série ! Gardez une cadence inébranlable et tenez-vous droit.",
+          "ar": "الجولة الثالثة! حافظ على إيقاعك الصامد واستقامة جسمك."
+        }
+      },
+      {
+        "name": "Active Recovery 3",
+        "durationSec": 120,
+        "target": {
+          "cadence": [75, 95],
+          "speedKmh": [3.2, 4.2]
+        },
+        "message": {
+          "en": "Great effort! Recover your oxygen for the grand finale.",
+          "fr": "Super effort ! Faites le plein d'oxygène pour la grande finale.",
+          "ar": "مجهود رائع! استعد طاقتك للجولة الختامية الكبرى."
+        }
+      },
+      {
+        "name": "Peak Sprint Round 4",
+        "durationSec": 90,
+        "target": {
+          "cadence": [145, 175],
+          "speedKmh": [6.2, 8.2]
+        },
+        "message": {
+          "en": "FINAL SPRINT! Empty the tank and give it everything you have!",
+          "fr": "DERNIER SPRINT ! Donnez tout ce que vous avez jusqu'au bout !",
+          "ar": "الانطلاقة السريعة الأخيرة! أخرج كل طاقتك حتى الثانية الأخيرة!"
+        }
+      },
+      {
+        "name": "Cool-down & Stretch",
+        "durationSec": 240,
+        "target": {
+          "cadence": [60, 80],
+          "speedKmh": [2.5, 3.6]
+        },
+        "message": {
+          "en": "Slow gentle cool-down. Lower heart rate gradually and celebrate your workout.",
+          "fr": "Retour au calme doux et progressif. Laissez le cœur redescendre et savourez la séance.",
+          "ar": "تهدئة تدريجية ولطيفة. دع نبضات القلب تنخفض واحتفل بإنجازك."
+        }
+      }
+    ]
+  },
+  "effects": {},
+  "timeline": [],
+  "endings": {
+    "victorySound": "win"
+  }
+}

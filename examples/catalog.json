@@ -1,0 +1,61 @@
+{
+  "activities": [
+    {
+      "id": "game-cyber-runner",
+      "type": "game",
+      "title": {
+        "en": "Neon Beat Runner",
+        "fr": "Course Rythmique Néon",
+        "ar": "عدّاء الإيقاع النيوني"
+      },
+      "description": {
+        "en": "Dodge obstacles, jump over hurdles, and hit high-energy rhythm gates on the interactive mat.",
+        "fr": "Évitez les obstacles, sautez les barrières et frappez les portes de rythme sur le tapis interactif.",
+        "ar": "تفاد الحواجز، اقفز فوق العقبات، واضرب بوابات الإيقاع النشطة على السجادة التفاعلية."
+      },
+      "duration": 90,
+      "difficulty": "medium",
+      "scriptUrl": "./examples/game-cyber-runner.json",
+      "youtubeUrl": "",
+      "badge": "Action Game"
+    },
+    {
+      "id": "walk-alpine-trail",
+      "type": "walk",
+      "title": {
+        "en": "Scenic Alpine Trail Walk",
+        "fr": "Balade Alpine Panoramique",
+        "ar": "المسار الألبي البانورامي"
+      },
+      "description": {
+        "en": "Walk in place through breathtaking mountain passes. Video speed matches your footstep cadence.",
+        "fr": "Marchez sur place à travers de magnifiques cols alpins. La vitesse vidéo s'adapte à votre cadence.",
+        "ar": "امشِ في مكانك عبر ممرات جبلية خلابة. سرعة الفيديو تتوافق مع إيقاع خطواتك."
+      },
+      "duration": 600,
+      "difficulty": "easy",
+      "scriptUrl": "./examples/walk-alpine-trail.json",
+      "youtubeUrl": "",
+      "badge": "Virtual Walk"
+    },
+    {
+      "id": "cardio-interval-burn",
+      "type": "cardio",
+      "title": {
+        "en": "HIIT Treadmill Interval Burn",
+        "fr": "Brûleur HIIT par Intervalles",
+        "ar": "حارق التمارين المتقطعة عالي الكثافة"
+      },
+      "description": {
+        "en": "Full-screen TV smart cardio dashboard with audio coaching, pace targets, and recovery zones.",
+        "fr": "Tableau de bord TV connecté avec coaching audio, cibles de cadence et zones de récupération.",
+        "ar": "لوحة تحكم ذكية كاملة الشاشة مع توجيه صوتي وأهداف للسرعة ومناطق استرداد اللياقة."
+      },
+      "duration": 1200,
+      "difficulty": "hard",
+      "scriptUrl": "./examples/cardio-interval-burn.json",
+      "youtubeUrl": "",
+      "badge": "Smart Cardio"
+    }
+  ]
+}

@@ -1,0 +1,363 @@
+{
+  "type": "game",
+  "meta": {
+    "id": "game-cyber-runner",
+    "title": {
+      "en": "Neon Beat Runner",
+      "fr": "Course Rythmique Néon",
+      "ar": "عدّاء الإيقاع النيوني"
+    },
+    "description": {
+      "en": "A 90-second rhythm obstacle run demonstrating all timeline event types, video rate changes, checkpoints, and effects.",
+      "fr": "Une course d'obstacles rythmée de 90 secondes démontrant tous les types d'événements, changements de vitesse et effets.",
+      "ar": "تحدي عقبات إيقاعي مدته 90 ثانية يستعرض كافة أنواع الأحداث وتغييرات السرعة ونقاط الحفظ."
+    },
+    "duration": 90,
+    "difficulty": "medium",
+    "version": "1.0.0"
+  },
+  "video": {
+    "youtubeId": "",
+    "src": "",
+    "startAt": 0,
+    "endAt": 90
+  },
+  "rules": {
+    "lives": 3,
+    "comboMultipliers": [1, 2, 3, 5],
+    "starsThresholds": [800, 1600, 2400],
+    "intensityMapping": {
+      "minRate": 0.75,
+      "maxRate": 1.5,
+      "steps": [0.75, 1.0, 1.25, 1.5]
+    }
+  },
+  "effects": {
+    "laserWarning": {
+      "type": "flash",
+      "color": "rgba(239, 68, 68, 0.4)",
+      "duration": 250
+    },
+    "starBurst": {
+      "type": "particles",
+      "particleType": "sparkle",
+      "count": 25
+    }
+  },
+  "timeline": [
+    {
+      "t": 1.0,
+      "type": "section",
+      "name": "Phase 1: Calibration Start"
+    },
+    {
+      "t": 2.5,
+      "type": "overlay",
+      "text": "READY... STEP IN TIME!",
+      "duration": 2.5,
+      "position": "center",
+      "color": "#38bdf8",
+      "animation": "pop"
+    },
+    {
+      "t": 5.0,
+      "type": "sound",
+      "preset": "countdown"
+    },
+    {
+      "t": 7.0,
+      "type": "action",
+      "expect": "JUMP",
+      "windowMs": 350,
+      "perfectWindowMs": 150,
+      "warnBeforeMs": 1800,
+      "points": 100,
+      "onSuccess": {
+        "effect": "flash",
+        "sound": "jump"
+      },
+      "onPerfect": {
+        "effect": "zoomPulse",
+        "sound": "perfect"
+      },
+      "onFail": {
+        "effect": "screenShake",
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 11.5,
+      "type": "action",
+      "expect": "SLIDE",
+      "windowMs": 350,
+      "perfectWindowMs": 150,
+      "warnBeforeMs": 1800,
+      "points": 100,
+      "onSuccess": {
+        "effect": "borderGlow",
+        "sound": "slide"
+      },
+      "onPerfect": {
+        "effect": "particles",
+        "sound": "perfect"
+      },
+      "onFail": {
+        "effect": "screenShake",
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 15.0,
+      "type": "checkpoint",
+      "id": "cp1",
+      "name": "Checkpoint Alpha"
+    },
+    {
+      "t": 16.5,
+      "type": "action",
+      "expect": "LEFT",
+      "windowMs": 350,
+      "perfectWindowMs": 150,
+      "warnBeforeMs": 1500,
+      "points": 100,
+      "onSuccess": {
+        "effect": "laneHighlight",
+        "lane": -1,
+        "sound": "good"
+      },
+      "onPerfect": {
+        "effect": "shockwave",
+        "sound": "perfect"
+      },
+      "onFail": {
+        "effect": "screenShake",
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 20.0,
+      "type": "action",
+      "expect": "RIGHT",
+      "windowMs": 350,
+      "perfectWindowMs": 150,
+      "warnBeforeMs": 1500,
+      "points": 100,
+      "onSuccess": {
+        "effect": "laneHighlight",
+        "lane": 1,
+        "sound": "good"
+      },
+      "onPerfect": {
+        "effect": "shockwave",
+        "sound": "perfect"
+      },
+      "onFail": {
+        "effect": "screenShake",
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 23.5,
+      "type": "action",
+      "expect": "CENTER",
+      "windowMs": 350,
+      "perfectWindowMs": 150,
+      "warnBeforeMs": 1400,
+      "points": 100,
+      "onSuccess": {
+        "effect": "laneHighlight",
+        "lane": 0,
+        "sound": "good"
+      },
+      "onPerfect": {
+        "effect": "zoomPulse",
+        "sound": "perfect"
+      },
+      "onFail": {
+        "effect": "screenShake",
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 26.0,
+      "type": "effect",
+      "name": "laserWarning"
+    },
+    {
+      "t": 27.0,
+      "type": "video",
+      "action": "setRate",
+      "rate": 1.25
+    },
+    {
+      "t": 28.5,
+      "type": "action",
+      "expect": "STEP_LEFT",
+      "windowMs": 350,
+      "perfectWindowMs": 150,
+      "warnBeforeMs": 1200,
+      "points": 80,
+      "onSuccess": {
+        "effect": "floatingText",
+        "text": "LEFT FOOT!",
+        "sound": "good"
+      },
+      "onPerfect": {
+        "sound": "perfect"
+      },
+      "onFail": {
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 31.0,
+      "type": "action",
+      "expect": "STEP_RIGHT",
+      "windowMs": 350,
+      "perfectWindowMs": 150,
+      "warnBeforeMs": 1200,
+      "points": 80,
+      "onSuccess": {
+        "effect": "floatingText",
+        "text": "RIGHT FOOT!",
+        "sound": "good"
+      },
+      "onPerfect": {
+        "sound": "perfect"
+      },
+      "onFail": {
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 34.0,
+      "type": "overlay",
+      "shape": "circle",
+      "duration": 2.0,
+      "position": "center",
+      "color": "rgba(234, 179, 8, 0.3)",
+      "animation": "pulse"
+    },
+    {
+      "t": 36.0,
+      "type": "action",
+      "expect": "ANY",
+      "windowMs": 400,
+      "perfectWindowMs": 180,
+      "warnBeforeMs": 1500,
+      "points": 150,
+      "onSuccess": {
+        "effect": "starBurst",
+        "sound": "coin"
+      },
+      "onPerfect": {
+        "sound": "perfect"
+      },
+      "onFail": {
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 40.0,
+      "type": "video",
+      "action": "pause",
+      "duration": 1.5
+    },
+    {
+      "t": 40.1,
+      "type": "overlay",
+      "text": "TIME FREEZE! REPAIRING ENERGY GRID...",
+      "duration": 1.4,
+      "position": "top",
+      "color": "#a855f7",
+      "animation": "fade"
+    },
+    {
+      "t": 43.0,
+      "type": "section",
+      "name": "Phase 2: High Velocity Rush"
+    },
+    {
+      "t": 45.0,
+      "type": "action",
+      "expect": "JUMP",
+      "windowMs": 320,
+      "perfectWindowMs": 140,
+      "warnBeforeMs": 1400,
+      "points": 120,
+      "onSuccess": {
+        "effect": "flash",
+        "sound": "jump"
+      },
+      "onPerfect": {
+        "effect": "zoomPulse",
+        "sound": "perfect"
+      },
+      "onFail": {
+        "effect": "screenShake",
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 49.0,
+      "type": "branch",
+      "condition": "minScore",
+      "value": 500,
+      "targetTime": 54.0,
+      "elseTargetTime": 50.0
+    },
+    {
+      "t": 55.0,
+      "type": "action",
+      "expect": "SLIDE",
+      "windowMs": 320,
+      "perfectWindowMs": 140,
+      "warnBeforeMs": 1300,
+      "points": 120,
+      "onSuccess": {
+        "effect": "borderGlow",
+        "sound": "slide"
+      },
+      "onPerfect": {
+        "effect": "particles",
+        "sound": "perfect"
+      },
+      "onFail": {
+        "effect": "screenShake",
+        "sound": "hit",
+        "loseLife": 1
+      }
+    },
+    {
+      "t": 60.0,
+      "type": "sound",
+      "preset": "levelUp"
+    },
+    {
+      "t": 61.0,
+      "type": "overlay",
+      "text": "FINAL SPRINT!",
+      "duration": 2.5,
+      "position": "center",
+      "color": "#22c55e",
+      "animation": "pop"
+    }
+  ],
+  "sections": [
+    { "name": "Calibration Start", "start": 0, "end": 42 },
+    { "name": "High Velocity Rush", "start": 43, "end": 90 }
+  ],
+  "endings": {
+    "victorySound": "win",
+    "defeatSound": "lose"
+  }
+}
