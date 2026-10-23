@@ -66,6 +66,41 @@ Because this application uses **zero build steps** and **pure relative imports (
 
 ---
 
+## 🌟 Experience Levels (Simple & Sweet for All Ages)
+
+FloorMat Studio TV offers **3 interface experience levels**, easily switchable at any time from the top navigation bar:
+
+1. **🌟 Normal (Simple & Fun - Default)**:
+   - Designed for **children, families, and everyday exercise**.
+   - Big, sweet, joyful activity cards with large bouncy buttons:
+     - ⚡ **Neon Beat Runner** (Action Rhythm Game)
+     - 🌲 **Alpine Nature Walk** (Scenic Virtual Walk)
+     - 🔥 **Happy HIIT Cardio** (Smart Treadmill Dashboard)
+   - Zero technical clutter: no confusing JSON links, authoring buttons, or developer telemetry. One tap or one press to launch!
+2. **🚀 Advanced**:
+   - For fitness enthusiasts and custom routes.
+   - Adds the ready-made Activity Catalog, YouTube link customizer (change background scenic videos), workout streak & calorie statistics, and the 8-step sensor calibration wizard.
+3. **⚡ Expert**:
+   - Full power-user and game developer suite.
+   - Adds the In-Engine Authoring Studio (`[A]`) with live button recording, direct JSON code editor, on-screen Mat Simulator with latency injection (`[S]`), and raw Gamepad debug telemetry (`[D]`).
+
+---
+
+## 🧭 Full Keyboard & Gamepad D-Pad Spatial Navigation
+
+The entire app is built for **100% hands-free TV remote, gamepad, and keyboard navigation**:
+
+- **Arrow Keys (Up / Down / Left / Right)**:
+  - Intelligently moves focus in 2D space between cards, buttons, tabs, and form controls.
+  - Automatically traps focus inside open dialogs and modals (Settings, Profiles, Calibration, Pause Menu, Results).
+  - Hovering with a mouse automatically synchronizes focus with keyboard arrows.
+- **Enter / Space / Gamepad Button 0 (A)**:
+  - Activates the currently focused item with a cheerful audio chime.
+- **Escape / Gamepad Button 1 (B)**:
+  - Closes any active modal or menu, or pauses active gameplay.
+
+---
+
 ## 🕹️ Testing in the Browser with the Mat Simulator
 
 You don't need a physical floor mat connected to test gameplay, virtual walking, or cardio tracking!

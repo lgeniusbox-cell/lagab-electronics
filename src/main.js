@@ -16,6 +16,8 @@ import { CardioEngine } from './cardio.js';
 import { AuthoringStudio } from './authoring.js';
 import { MatSimulator } from './simulator.js';
 import { UIManager } from './ui.js';
+import { InputManager } from './input.js';
+import { BUILTIN_ACTIVITIES } from './builtinActivities.js';
 import './bridge.js'; // Registers window.MatEngine
 
 class AppManager {
@@ -62,33 +64,45 @@ class AppManager {
     }
   }
 
-  // Fetch and validate script JSON
+  // Fetch and validate script JSON (with instant built-in fallback)
   async loadActivityFromLinks(youtubeInput, scriptUrl) {
     const errorBox = document.getElementById('loader-error-box');
     if (errorBox) errorBox.classList.add('hidden');
 
     try {
-      // 1. Fetch script.json
-      let resp;
-      try {
-        resp = await fetch(scriptUrl);
-      } catch (fetchErr) {
-        throw new Error(`Failed to fetch script from "${scriptUrl}". Hint: Ensure CORS is enabled on the remote server, or paste the JSON directly using "Paste JSON / Local File".`);
+      let scriptJson = null;
+
+      // 1. Check for built-in in-memory activities first (guarantees offline & GitHub Pages instant load)
+      for (const [key, data] of Object.entries(BUILTIN_ACTIVITIES)) {
+        if (scriptUrl === key || scriptUrl.includes(key)) {
+          scriptJson = JSON.parse(JSON.stringify(data));
+          break;
+        }
       }
 
-      if (!resp.ok) {
-        throw new Error(`HTTP error ${resp.status} (${resp.statusText}) when loading "${scriptUrl}". Check that the file exists and the path is valid.`);
+      // 2. If not a known built-in or custom URL, fetch from network
+      if (!scriptJson) {
+        let resp;
+        try {
+          resp = await fetch(scriptUrl);
+        } catch (fetchErr) {
+          throw new Error(`Failed to fetch script from "${scriptUrl}". Hint: Ensure CORS is enabled on the remote server, or paste the JSON directly using "Paste JSON / Local File".`);
+        }
+
+        if (!resp.ok) {
+          throw new Error(`HTTP error ${resp.status} (${resp.statusText}) when loading "${scriptUrl}". Check that the file exists and the path is valid.`);
+        }
+
+        scriptJson = await resp.json();
       }
 
-      const scriptJson = await resp.json();
-
-      // 2. Validate script format
+      // 3. Validate script format
       const validationError = this.validateScript(scriptJson);
       if (validationError) {
         throw new Error(`Script format validation failed: ${validationError}`);
       }
 
-      // 3. Start activity
+      // 4. Start activity
       this.startActivity(scriptJson, youtubeInput);
     } catch (err) {
       console.error('[App] Load error:', err);
@@ -150,6 +164,7 @@ class AppManager {
 
     // Initialize visual effects engine
     EffectsManager.init(overlayRoot);
+    InputManager.setGameplayActive(true);
 
     if (script.type === 'cardio') {
       // CARDIO has no video; it renders the athletic dashboard directly
@@ -178,7 +193,9 @@ class AppManager {
 
       // Handle video errors gracefully with clear user guidance
       this.currentVideoSource.onError((code, message) => {
-        alert(`Video Warning [Code ${code}]: ${message}\n\nFalling back to simulated procedural video track.`);
+        if (window.showToast) {
+          window.showToast(`Video Notice [Code ${code}]: ${message}. Switching to procedural track.`, 'error');
+        }
         // Fallback to placeholder video
         this.currentVideoSource.destroy();
         this.currentVideoSource = createVideoSource(videoContainer, {
@@ -227,6 +244,7 @@ class AppManager {
   }
 
   cleanCurrentSession() {
+    InputManager.setGameplayActive(false);
     if (this.currentEngine) {
       this.currentEngine.destroy();
       this.currentEngine = null;

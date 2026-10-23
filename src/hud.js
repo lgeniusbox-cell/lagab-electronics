@@ -394,28 +394,32 @@ export class HUDManager {
   // --- PAUSE MENU MODAL ---
   showPauseMenu({ onResume, onRestart, onQuit, onCalibrate }) {
     if (this.pauseModalDom) return;
+    InputManager.setGameplayActive(false);
+
     this.pauseModalDom = document.createElement('div');
     this.pauseModalDom.id = 'hud-pause-modal';
-    this.pauseModalDom.className = 'absolute inset-0 z-50 flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-6 select-none';
+    this.pauseModalDom.className = 'absolute inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-md p-6 select-none';
     this.pauseModalDom.innerHTML = `
-      <div class="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl p-8 shadow-2xl flex flex-col items-center text-center">
-        <h2 class="text-3xl font-black tracking-wider text-white mb-2 uppercase">${t('pauseTitle')}</h2>
-        <p class="text-sm text-slate-400 mb-8">Take a breather, grab some water, or calibrate your sensor.</p>
+      <div class="w-full max-w-md bg-slate-900 border-2 border-indigo-500/40 rounded-3xl p-8 shadow-2xl flex flex-col items-center text-center">
+        <h2 class="text-3xl font-black tracking-wider text-white mb-2 uppercase flex items-center gap-2">
+          <span>⏸️</span> ${t('pauseTitle')}
+        </h2>
+        <p class="text-xs text-slate-300 mb-6">Take a breather, grab some water, or calibrate your sensor.</p>
 
         <div class="w-full space-y-3" id="pause-menu-actions">
-          <button id="pause-resume-btn" class="w-full py-4 px-6 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-slate-950 font-black text-lg rounded-xl shadow-lg transition">
+          <button id="pause-resume-btn" class="nav-focus w-full py-4 px-6 bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-300 hover:to-blue-400 text-slate-950 font-black text-lg rounded-2xl shadow-lg transition">
             ${t('resume')} (ESC)
           </button>
-          <button id="pause-restart-btn" class="w-full py-3.5 px-6 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl border border-slate-700 transition">
+          <button id="pause-restart-btn" class="nav-focus w-full py-3.5 px-6 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-2xl border border-slate-700 transition">
             ${t('restart')}
           </button>
-          <button id="pause-calibrate-btn" class="w-full py-3.5 px-6 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl border border-slate-700 transition">
-            ${t('calibrationTitle')}
+          <button id="pause-calibrate-btn" class="nav-focus w-full py-3.5 px-6 bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold rounded-2xl border border-amber-500/30 transition">
+            ⚖️ ${t('calibrationTitle')}
           </button>
-          <button id="pause-mute-btn" class="w-full py-3 px-6 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl border border-slate-700 text-sm transition">
+          <button id="pause-mute-btn" class="nav-focus w-full py-3 px-6 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-2xl border border-slate-700 text-sm transition">
             ${AudioManager.isMuted ? t('unmute') : t('mute')}
           </button>
-          <button id="pause-quit-btn" class="w-full py-3 px-6 bg-rose-950/60 hover:bg-rose-900/80 text-rose-300 font-bold rounded-xl border border-rose-800/60 text-sm transition mt-2">
+          <button id="pause-quit-btn" class="nav-focus w-full py-3 px-6 bg-rose-950/60 hover:bg-rose-900 text-rose-300 font-bold rounded-2xl border border-rose-800/60 text-sm transition mt-2">
             ${t('quit')}
           </button>
         </div>
@@ -430,7 +434,9 @@ export class HUDManager {
     const muteBtn = this.pauseModalDom.querySelector('#pause-mute-btn');
     const quitBtn = this.pauseModalDom.querySelector('#pause-quit-btn');
 
-    resumeBtn.focus();
+    setTimeout(() => {
+      if (resumeBtn) resumeBtn.focus();
+    }, 50);
 
     resumeBtn.addEventListener('click', () => {
       this.closePauseMenu();
@@ -463,10 +469,12 @@ export class HUDManager {
       this.pauseModalDom.parentNode.removeChild(this.pauseModalDom);
       this.pauseModalDom = null;
     }
+    InputManager.setGameplayActive(true);
   }
 
   // --- RESULTS / SUMMARY MODAL ---
   showResultsModal({ activityId, score, maxCombo, stars, steps, distanceKm, calories, onRestart, onQuit }) {
+    InputManager.setGameplayActive(false);
     const isNewRecord = saveRecord(activityId, { score, stars });
     if (stars > 0) {
       AudioManager.play('win');
@@ -475,23 +483,23 @@ export class HUDManager {
     const modal = document.createElement('div');
     modal.className = 'absolute inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-lg p-6 select-none';
     modal.innerHTML = `
-      <div class="w-full max-w-lg bg-slate-900 border border-slate-700/80 rounded-3xl p-8 shadow-2xl flex flex-col items-center text-center">
-        <div class="text-xs font-bold tracking-widest text-sky-400 uppercase mb-1">${t('victory')}</div>
-        <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">Workout Complete!</h2>
+      <div class="w-full max-w-lg bg-slate-900 border-2 border-indigo-500/40 rounded-3xl p-8 shadow-2xl flex flex-col items-center text-center">
+        <div class="text-xs font-black tracking-widest text-amber-300 uppercase mb-1">🎉 ${t('victory')}</div>
+        <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">Adventure Complete!</h2>
 
         ${isNewRecord ? `<div class="px-4 py-1.5 mb-4 bg-amber-500/20 border border-amber-400 text-amber-300 text-xs font-black rounded-full uppercase tracking-wider animate-pulse">${t('newRecord')}</div>` : ''}
 
         <!-- Stars (1 to 3) -->
         <div class="flex items-center justify-center gap-3 my-4">
           ${[1, 2, 3].map(s => `
-            <div class="text-5xl md:text-6xl transition-all duration-300 ${s <= stars ? 'text-amber-400 scale-110 drop-shadow-[0_0_20px_rgba(251,191,36,0.6)]' : 'text-slate-700'}">
+            <div class="text-5xl md:text-6xl transition-all duration-300 ${s <= stars ? 'text-amber-400 scale-110 drop-shadow-[0_0_25px_rgba(251,191,36,0.7)]' : 'text-slate-700'}">
               ★
             </div>
           `).join('')}
         </div>
 
         <!-- Metrics Grid -->
-        <div class="grid grid-cols-2 gap-3 w-full my-6 bg-slate-950/60 p-4 rounded-2xl border border-slate-800">
+        <div class="grid grid-cols-2 gap-3 w-full my-6 bg-slate-950/70 p-4 rounded-2xl border border-indigo-950">
           <div class="text-left">
             <div class="text-xs text-slate-400 font-semibold uppercase">${t('score')}</div>
             <div class="text-2xl font-black font-mono text-white">${score.toLocaleString()}</div>
@@ -515,10 +523,10 @@ export class HUDManager {
         </div>
 
         <div class="w-full flex gap-3">
-          <button id="results-restart-btn" class="flex-1 py-4 bg-sky-500 hover:bg-sky-400 text-slate-950 font-black rounded-xl text-base transition">
+          <button id="results-restart-btn" class="nav-focus flex-1 py-4 bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-300 hover:to-blue-400 text-slate-950 font-black rounded-2xl text-base transition shadow-lg">
             ${t('restart')}
           </button>
-          <button id="results-quit-btn" class="flex-1 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-base border border-slate-700 transition">
+          <button id="results-quit-btn" class="nav-focus flex-1 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-2xl text-base border border-slate-700 transition">
             ${t('quit')}
           </button>
         </div>
@@ -527,12 +535,19 @@ export class HUDManager {
 
     this.container.appendChild(modal);
 
-    modal.querySelector('#results-restart-btn').addEventListener('click', () => {
+    const restartBtn = modal.querySelector('#results-restart-btn');
+    const quitBtn = modal.querySelector('#results-quit-btn');
+
+    setTimeout(() => {
+      if (restartBtn) restartBtn.focus();
+    }, 50);
+
+    restartBtn.addEventListener('click', () => {
       modal.remove();
       if (onRestart) onRestart();
     });
 
-    modal.querySelector('#results-quit-btn').addEventListener('click', () => {
+    quitBtn.addEventListener('click', () => {
       modal.remove();
       if (onQuit) onQuit();
     });

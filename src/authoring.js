@@ -31,6 +31,8 @@ export class AuthoringStudio {
     this.rafId = null;
     this.unsubInput = null;
 
+    InputManager.setGameplayActive(false);
+
     this.initUI();
     this.initVideo();
     this.initRecordingListener();
@@ -50,16 +52,16 @@ export class AuthoringStudio {
 
           <!-- Video Playback & Record Controls -->
           <div class="flex items-center gap-2">
-            <button id="auth-play-btn" class="px-4 py-1.5 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold rounded-lg transition">
+            <button id="auth-play-btn" class="nav-focus px-4 py-1.5 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold rounded-lg transition">
               Play / Pause (Space)
             </button>
             <div class="flex items-center gap-1 bg-slate-800 px-2 py-1 rounded-lg border border-slate-700">
               <span class="text-slate-400 text-[10px]">Speed:</span>
-              <button class="auth-speed-btn px-1.5 py-0.5 rounded text-[11px] hover:bg-slate-700" data-rate="0.5">0.5x</button>
-              <button class="auth-speed-btn px-1.5 py-0.5 rounded text-[11px] bg-slate-700 font-bold text-sky-400" data-rate="1.0">1.0x</button>
-              <button class="auth-speed-btn px-1.5 py-0.5 rounded text-[11px] hover:bg-slate-700" data-rate="1.5">1.5x</button>
+              <button class="nav-focus auth-speed-btn px-1.5 py-0.5 rounded text-[11px] hover:bg-slate-700" data-rate="0.5">0.5x</button>
+              <button class="nav-focus auth-speed-btn px-1.5 py-0.5 rounded text-[11px] bg-slate-700 font-bold text-sky-400" data-rate="1.0">1.0x</button>
+              <button class="nav-focus auth-speed-btn px-1.5 py-0.5 rounded text-[11px] hover:bg-slate-700" data-rate="1.5">1.5x</button>
             </div>
-            <button id="auth-record-toggle" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-lg flex items-center gap-1.5 transition">
+            <button id="auth-record-toggle" class="nav-focus px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-lg flex items-center gap-1.5 transition">
               <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
               <span>LIVE RECORD [R]</span>
             </button>
@@ -67,13 +69,13 @@ export class AuthoringStudio {
 
           <!-- Export & Close -->
           <div class="flex items-center gap-2">
-            <button id="auth-check-btn" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 font-semibold transition">
+            <button id="auth-check-btn" class="nav-focus px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 font-semibold transition">
               Validate Rules
             </button>
-            <button id="auth-export-btn" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg transition">
+            <button id="auth-export-btn" class="nav-focus px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg transition">
               Export script.json
             </button>
-            <button id="auth-close-btn" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-lg transition">
+            <button id="auth-close-btn" class="nav-focus px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-lg transition">
               ✕ Exit
             </button>
           </div>
@@ -375,7 +377,9 @@ export class AuthoringStudio {
     const jsonStr = JSON.stringify(this.script, null, 2);
     // Copy to clipboard
     navigator.clipboard?.writeText(jsonStr).then(() => {
-      alert('Script JSON copied to clipboard!');
+      if (window.showToast) {
+        window.showToast('Script JSON copied to clipboard!', 'success');
+      }
     }).catch(() => {});
 
     // Trigger file download

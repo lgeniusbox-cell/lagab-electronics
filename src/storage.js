@@ -8,6 +8,7 @@
 export const SETTINGS = {
   version: '1.0.0',
   language: 'en', // 'en' | 'fr' | 'ar'
+  experienceLevel: 'normal', // 'normal' | 'advanced' | 'expert'
   sound: {
     masterVolume: 0.8,
     soundFx: true,
@@ -261,7 +262,12 @@ export const I18N = {
     healthNoticeBody: 'Speed and distance are estimates calculated from cadence and stride length. Stop immediately if you experience pain, dizziness, or chest tightness. Always consult a physician before starting any vigorous exercise program.',
     healthAcknowledge: 'I Understand and Agree',
     accuracyZone: 'In Target Zone',
-    streakDays: 'Days Streak'
+    streakDays: 'Days Streak',
+    expLevel: 'Mode',
+    normalMode: 'Simple & Fun',
+    advancedMode: 'Advanced',
+    expertMode: 'Expert / Dev',
+    navHint: 'Use Arrow Keys / D-Pad + Enter to Navigate'
   },
   fr: {
     appTitle: 'FloorMat Studio TV',
@@ -319,7 +325,12 @@ export const I18N = {
     healthNoticeBody: 'La vitesse et la distance sont des estimations calculées à partir de la cadence et de la longueur de foulée. Arrêtez immédiatement en cas de douleur, vertige ou essoufflement anormal. Consultez un médecin avant d\'entamer un programme d\'effort.',
     healthAcknowledge: 'J\'ai Compris et J\'accepte',
     accuracyZone: 'Dans la Zone Cible',
-    streakDays: 'Jours Consécutifs'
+    streakDays: 'Jours Consécutifs',
+    expLevel: 'Mode',
+    normalMode: 'Simple & Amusant',
+    advancedMode: 'Avancé',
+    expertMode: 'Expert / Dév',
+    navHint: 'Flèches directionnelles / Manette + Entrée'
   },
   ar: {
     appTitle: 'FloorMat Studio TV',
@@ -377,7 +388,12 @@ export const I18N = {
     healthNoticeBody: 'السرعة والمسافة تقديرات محسوبة من إيقاع الخطى وطول الخطوة. توقف فوراً إذا شعرت بألم أو دوار أو ضيق تنفس. استشر طبيباً قبل ممارسة أي تمرين مكثف.',
     healthAcknowledge: 'أفهم وأوافق',
     accuracyZone: 'في النطاق المستهدف',
-    streakDays: 'أيام متتالية'
+    streakDays: 'أيام متتالية',
+    expLevel: 'المستوى',
+    normalMode: 'بسيط وممتع',
+    advancedMode: 'متقدم',
+    expertMode: 'خبير ومطور',
+    navHint: 'استخدم الأسهم / يد التحكم + Enter للتنقل'
   }
 };
 
